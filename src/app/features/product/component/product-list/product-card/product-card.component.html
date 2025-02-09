@@ -1,0 +1,20 @@
+<div class="card" style="width: 18rem;">
+    <img [src]="backendUrl + product().imageUrl" class="card-img-top" [alt]="product().title">
+    <div class="card-body">
+        <h5 class="card-title">{{ product().title }}</h5>
+        <p class="card-text card-description">{{ product().description }}</p>
+        <p class="card-text fw-bold">{{ product().price }}$</p>
+        <div class="d-flex gap-2">
+            @if(role() === 'admin'){
+            <a [routerLink]="'/admin/product/edit-product/' + product()._id" class="btn btn-primary">Edit</a>
+            <a (click)="deleteProduct()" class="btn btn-primary">Delete</a>
+            }
+            @else {
+            <a [routerLink]="'/products/' + product()._id" class="btn btn-primary">Details</a>
+            @if(user){
+            <app-add-to-cart-btn [productId]="product()._id!" />
+            }
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+.box {
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.waiting-img {
+    height: 200px;
+}
+
+.loader{
+    height: 20px;
+    animation: rotate 500ms linear 0s infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(360deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}

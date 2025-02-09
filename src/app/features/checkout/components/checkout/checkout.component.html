@@ -1,0 +1,23 @@
+<div class="box">
+    <ol>
+        @for(cartItem of cart; track cartItem.product._id){
+        <li class="my-2">
+            <p class="mb-0">{{ cartItem.product.title }}</p>
+            <div class="d-flex gap-2">
+                <span>${{ cartItem.product.price}}</span>
+                <span>x</span>
+                <span>{{ cartItem.quantity}} pc.</span>
+            </div>
+        </li>
+        }
+        <hr>
+        <div>
+            <span>Order Total:</span>
+            <span class="fw-bold ms-1">${{ totalAmount }}</span>
+        </div>
+    </ol>
+
+    <div class="text-center">
+        <button class="btn btn-primary" (click)="redirectToCheckout()">Order Now</button>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="m-4">
+    <h3>Orders</h3>
+    <div class="d-flex justify-content-between mb-3">
+        <span>Title</span>
+        <span>Price</span>
+        <span>Quantity</span>
+    </div>
+    @for(order of orders; track order._id){
+    <div class="border border-dark p-2" [ngClass]="{'mb-3': !$last}">
+        <span class="text-secondary">#{{ order._id }} -</span>
+        <span class="ms-1">
+            <a class="link" (click)="fetchInvoice(order._id)">Invoice</a>
+        </span>
+        @for(item of order.products ; track item.product._id){
+        <div class="d-flex justify-content-between">
+            <span>{{ item.product.title }}</span>
+            <span>{{ item.product.price }}</span>
+            <span>{{ item.quantity }}</span>
+        </div>
+        }
+    </div>
+    }
+</div>

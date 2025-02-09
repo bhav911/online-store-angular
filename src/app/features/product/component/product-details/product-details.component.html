@@ -1,0 +1,10 @@
+<div class="container text-center my-4" style="width: 40rem;">
+    <h3>{{ product?.title }}</h3>
+    <hr>
+    <img [src]="backendUrl + product?.imageUrl" class="card-img-top" [alt]="product?.title">
+    <p class="fw-bold">{{ product?.price }}$</p>
+    <p>{{ product?.description }}</p>
+    @if(user){
+    <app-add-to-cart-btn [productId]="productId()" />
+    }
+</div>

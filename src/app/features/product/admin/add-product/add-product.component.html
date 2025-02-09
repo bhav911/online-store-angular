@@ -1,0 +1,44 @@
+<form class="product-form" [formGroup]="productForm" (ngSubmit)="addProduct()">
+    <div class="form-control">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" [formControl]="formControls.title" (blur)="invalidTitle()"
+            [ngClass]="{'is-invalid': errorMessage.invalidTitleMessage}">
+        @if(errorMessage.invalidTitleMessage){
+        <div class="position-relative">
+            <p class="error-msg">{{ errorMessage.invalidTitleMessage }}</p>
+        </div>
+        }
+    </div>
+    <div class="form-control">
+        <label for="description">Description</label>
+        <textarea name="description" id="description" rows="5" [formControl]="formControls.description"
+            (blur)="invalidDescription()" [ngClass]="{'is-invalid': errorMessage.invalidDescriptionMessage}"></textarea>
+        @if(errorMessage.invalidDescriptionMessage){
+        <div class="position-relative">
+            <p class="error-msg">{{ errorMessage.invalidDescriptionMessage }}</p>
+        </div>
+        }
+    </div>
+
+    <div class="form-control">
+        <label for="image">Image</label>
+        <input type="file" name="image" id="image" accept="image/*"
+            (change)="imageFileSelected($event)">
+        @if(errorMessage.invalidImageMessage){
+        <div class="position-relative">
+            <p class="error-msg">{{ errorMessage.invalidImageMessage }}</p>
+        </div>
+        }
+    </div>
+    <div class="form-control">
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price" [formControl]="formControls.price" (blur)="invalidPrice()"
+            [ngClass]="{'is-invalid': errorMessage.invalidPriceMessage}">
+        @if(errorMessage.invalidPriceMessage){
+        <div class="position-relative">
+            <p class="error-msg">{{ errorMessage.invalidPriceMessage }}</p>
+        </div>
+        }
+    </div>
+    <button class="btn" type="submit">{{ productId() ? 'Update' : 'Add' }} Product</button>
+</form>

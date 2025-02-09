@@ -1,0 +1,19 @@
+<div class="box">
+    <ol>
+        @for(product of order().products; track product.product._id){
+        <li class="my-2">
+            <p class="mb-0">{{ product.product.title }}</p>
+            <div class="d-flex gap-2">
+                <span>${{ product.product.price}}</span>
+                <span>x</span>
+                <span>{{ product.quantity}} pc.</span>
+            </div>
+        </li>
+        }
+        <hr>
+        <div>
+            <span>Order Total:</span>
+            <span class="fw-bold ms-1">${{ totalAmount }}</span>
+        </div>
+    </ol>
+</div>

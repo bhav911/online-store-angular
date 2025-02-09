@@ -1,0 +1,22 @@
+<ul>
+    @for(cartItem of cart; track cartItem.product._id){
+    @if(cartItem.product._id !== '-1'){
+    <li class="my-2">
+        {{ cartItem.product.title + ' (' + cartItem.quantity + ')' }}
+        <button class="btn btn-primary" (click)="deleteCartItem(cartItem.product._id!)">Delete</button>
+    </li>
+    }
+    @else {
+    <li>Product Deleted</li>
+    }
+    }
+    @empty {
+    <p>No products in cart</p>
+    }
+</ul>
+
+<div>
+    @if(cart.length > 0){
+    <button class="btn btn-primary" routerLink="/checkout">Order Now</button>
+    }
+</div>

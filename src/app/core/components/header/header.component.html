@@ -1,0 +1,43 @@
+<header class="main-header">
+    <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+            <li class="main-header__item">
+                <a routerLink="/home" routerLinkActive="active-link" class="">Shop</a>
+            </li>
+            <li class="main-header__item">
+                <a routerLink="/products" [queryParams]="{role:'user'}" routerLinkActive="active-link"
+                    class="">Products</a>
+            </li>
+            @if(user){
+            <li class="main-header__item">
+                <a routerLink="/cart" routerLinkActive="active-link" class="">Cart</a>
+            </li>
+            <li class="main-header__item">
+                <a routerLink="/orders" routerLinkActive="active-link" class="">Orders</a>
+            </li>
+            <li class="main-header__item">
+                <a routerLink="/admin/product/add-product" routerLinkActive="active-link" class="">Add Product</a>
+            </li>
+            <li class="main-header__item">
+                <a routerLink="/admin/products" [queryParams]="{role:'admin'}" routerLinkActive="active-link"
+                    class="">Admin Products </a>
+            </li>
+            }
+        </ul>
+        <ul class="main-header__item-list">
+            @if(!user){
+            <li class="main-header__item">
+                <a routerLink="/login" routerLinkActive="active-link">Login</a>
+            </li>
+            <li class="main-header__item">
+                <a routerLink="/signup" routerLinkActive="active-link">Signup</a>
+            </li>
+            }
+            @else {
+            <li class="main-header__item" style="cursor: pointer;">
+                <a (click)="logout()" routerLinkActive="active-link">Logout</a>
+            </li>
+            }
+        </ul>
+    </nav>
+</header>
